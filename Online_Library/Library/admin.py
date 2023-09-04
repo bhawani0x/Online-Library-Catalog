@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Books, Author, Members
+from .models import *
 
 @admin.register(Books)
 class BooksAdmin(admin.ModelAdmin):
@@ -13,4 +13,3 @@ class AuthorAdmin(admin.ModelAdmin):
 @admin.register(Members)
 class MembersAdmin(admin.ModelAdmin):
     list_display = ('member_id', 'name', 'dob', 'doj')
-    filter_horizontal = ('books',)

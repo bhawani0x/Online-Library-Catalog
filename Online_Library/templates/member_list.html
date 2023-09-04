@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Members List</h1>
+  <ul>
+    {% for member in object_list %}
+      <li><a href="{% url 'member-detail' member.pk %}">{{ member.name }}</a></li>
+    {% endfor %}
+  </ul>
+  <a href="{% url 'member-create' %}">Add New Member</a>
+{% endblock %}
+
+</body>
+</html>

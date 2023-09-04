@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Return Book</h1>
+  <p>Book: {{ borrowing.book.title }}</p>
+  <p>Borrowed by: {{ borrowing.member.name }}</p>
+  <p>Borrowed on: {{ borrowing.borrow_date }}</p>
+  <form method="post" action="{% url 'book-return' borrowing.id %}">
+    {% csrf_token %}
+    <button type="submit">Return</button>
+  </form>
+  <a href="{% url 'book-list' %}">Back to Book List</a>
+{% endblock %}
+
+</body>
+</html>

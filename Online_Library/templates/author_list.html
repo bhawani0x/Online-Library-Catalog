@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Authors List</h1>
+  <ul>
+    {% for author in object_list %}
+      <li><a href="{% url 'author-detail' author.pk %}">{{ author.name }}</a></li>
+    {% endfor %}
+  </ul>
+  <a href="{% url 'author-create' %}">Add New Author</a>
+{% endblock %}
+
+</body>
+</html>

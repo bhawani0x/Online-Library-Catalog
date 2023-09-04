@@ -10,12 +10,8 @@ class Books(models.Model):
     available_copies = models.PositiveIntegerField(default=0)
 
     def __str__(self):
-        return f"{self.title} ===> {self.isbn}"
+        return f"{self.title} ===> {self.isbn} ===> available_copies {self.available_copies}"
 
-    def take_book(self):
-        if self.available_copies > 0:
-            self.available_copies -= 1
-            self.save()
 
 
 class Author(models.Model):
@@ -34,7 +30,16 @@ class Members(models.Model):
     name = models.CharField(max_length=120)
     dob = models.DateField()
     doj = models.DateField()
-    books = models.ManyToManyField(Books, blank=True)
 
     def __str__(self):
         return f"{self.name} ==>> {self.member_id}"
+
+
+class BookBorrowing(models.Model):
+    member = models.ForeignKey(Members, on_delete=models.CASCADE)
+    book = models.ForeignKey(Books, on_delete=models.CASCADE)
+    borrow_date = models.DateTimeField(auto_now_add=True)
+    return_date = models.DateTimeField(null=True, blank=True)
+
+    def __str__(self):
+        return f"Borrowed by {self.member.name}: {self.book.title}"

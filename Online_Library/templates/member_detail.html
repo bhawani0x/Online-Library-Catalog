@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>{{ object.name }}</h1>
+  <p>Member ID: {{ object.member_id }}</p>
+  <p>Date of Birth: {{ object.dob }}</p>
+  <p>Date of Joining: {{ object.doj }}</p>
+  <a href="{% url 'member-list' %}">Back to Members List</a>
+{% endblock %}
+
+</body>
+</html>

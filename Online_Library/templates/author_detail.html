@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+{% block content %}
+  <h1>{{ object.name }}</h1>
+  <p>Author ID: {{ object.author_id }}</p>
+  <p>Date of Birth: {{ object.dob }}</p>
+  <p>Nationality: {{ object.nationality }}</p>
+  <p>Books Authored:</p>
+  <ul>
+    {% for book in object.books.all %}
+      <li>{{ book.title }}</li>
+    {% endfor %}
+  </ul>
+  <a href="{% url 'author-list' %}">Back to Authors List</a>
+{% endblock %}
+
+</body>
+</html>
